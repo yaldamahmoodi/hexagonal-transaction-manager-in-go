@@ -338,10 +338,10 @@ A simplified helper might look like this:
 
 ````go
 func GetDB(ctx context.Context, db *sql.DB) port.DBTX {
-if tx, ok := ctx.Value(txKey).(*sql.Tx); ok {
-return tx
-}
-return db
+    if tx, ok := ctx.Value(txKey).(*sql.Tx); ok {
+        return tx
+    }
+	return db
 }
 ````
 Repositories can then obtain the correct database object without knowing anything about transactions.
